@@ -2,7 +2,7 @@
 
 namespace SEBT.Portal.StatesPlugins.Interfaces;
 
-public interface IStateMetadataService
+public interface IStateMetadataService : IStatePlugin
 {
     Task<StateMetadata> GetStateMetadata();
 }
