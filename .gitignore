@@ -416,3 +416,9 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# macOS stuff
+.DS_Store
+
+# Automatic NuGet package output
+**/nuget-output/*
