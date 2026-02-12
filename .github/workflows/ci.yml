@@ -22,3 +22,6 @@ jobs:
 
       - name: Build
         run: dotnet build SEBT.Portal.StateConnector.slnx --no-restore -c Release
+
+      - name: Test
+        run: dotnet test SEBT.Portal.StateConnector.slnx --no-build -c Release --verbosity normal
