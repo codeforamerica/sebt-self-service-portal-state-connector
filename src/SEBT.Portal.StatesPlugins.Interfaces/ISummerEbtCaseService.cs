@@ -3,9 +3,6 @@ using SEBT.Portal.StatesPlugins.Interfaces.Models.Household;
 
 namespace SEBT.Portal.StatesPlugins.Interfaces;
 
-/// <summary>
-/// State plugin that retrieves household data. Returns HouseholdData directly so the main portal needs no mapping.
-/// </summary>
 public interface ISummerEbtCaseService : IStatePlugin
 {
     /// <summary>
