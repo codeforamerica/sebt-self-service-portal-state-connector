@@ -26,6 +26,7 @@ public class EnumContractTests
     [InlineData(CardStatus.Mailed, 1)]
     [InlineData(CardStatus.Active, 2)]
     [InlineData(CardStatus.Deactivated, 3)]
+    [InlineData(CardStatus.Unknown, 4)]
     public void CardStatus_has_expected_values(CardStatus value, int expected)
     {
         Assert.Equal(expected, (int)value);

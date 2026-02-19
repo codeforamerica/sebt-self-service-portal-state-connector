@@ -8,5 +8,6 @@ public enum CardStatus
     Requested = 0,
     Mailed = 1,
     Active = 2,
-    Deactivated = 3
+    Deactivated = 3,
+    Unknown = 4
 }
