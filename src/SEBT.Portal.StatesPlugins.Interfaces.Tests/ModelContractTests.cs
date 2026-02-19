@@ -39,8 +39,7 @@ public class ModelContractTests
             "BenefitAvailableDate", "BenefitExpirationDate", "ChildDateOfBirth", "ChildFirstName",
             "ChildLastName", "EbtCardBalance", "EbtCardIssueDate", "EbtCardLastFour",
             "EbtCardStatus", "EbtCaseNumber", "EligibilityType", "HouseholdType",
-            "MailingAddressCity", "MailingAddressLine1", "MailingAddressLine2",
-            "MailingAddressState", "MailingAddressZip", "SummerEBTCaseID"
+            "MailingAddress", "SummerEBTCaseID"
         };
         foreach (var name in expected)
             Assert.Contains(name, names);
@@ -53,11 +52,12 @@ public class ModelContractTests
         var names = GetPublicInstancePropertyNames(typeof(HouseholdData));
         Assert.Contains("Email", names);
         Assert.Contains("Phone", names);
+        Assert.Contains("SummerEbtCases", names);
         Assert.Contains("Applications", names);
         Assert.Contains("AddressOnFile", names);
         Assert.Contains("UserProfile", names);
         Assert.Contains("BenefitIssuanceType", names);
-        Assert.Equal(6, names.Length);
+        Assert.Equal(7, names.Length);
     }
 
     [Fact]

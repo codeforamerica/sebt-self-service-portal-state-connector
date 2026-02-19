@@ -1,3 +1,5 @@
+using SEBT.Portal.StatesPlugins.Interfaces.Models.Household;
+
 namespace SEBT.Portal.StatesPlugins.Interfaces.Data.Cases;
 
 /// <summary>
@@ -14,12 +16,8 @@ public class SummerEbtCase
     public required string HouseholdType { get; init; }
     public required string EligibilityType { get; init; }
     public DateOnly? ApplicationDate { get; init; }
-    public string? ApplicationStatus { get; init; }
-    public string? MailingAddressLine1 { get; init; }
-    public string? MailingAddressLine2 { get; init; }
-    public string? MailingAddressCity { get; init; }
-    public string? MailingAddressState { get; init; }
-    public string? MailingAddressZip { get; init; }
+    public ApplicationStatus ApplicationStatus { get; init; } = ApplicationStatus.Unknown;
+    public Address? MailingAddress { get; init; }
     public string? EbtCaseNumber { get; init; }
     public string? EbtCardLastFour { get; init; }
     public string? EbtCardStatus { get; init; }
