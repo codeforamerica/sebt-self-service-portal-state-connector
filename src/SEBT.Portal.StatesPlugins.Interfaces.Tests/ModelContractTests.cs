@@ -104,4 +104,20 @@ public class ModelContractTests
         var expected = new[] { "CaseNumber", "FirstName", "LastName" };
         Assert.Equal(expected, names);
     }
+
+    [Fact]
+    public void HealthCheckResult_Healthy_has_expected_properties()
+    {
+        var names = GetPublicInstancePropertyNames(typeof(HealthCheckResult.Healthy));
+        Assert.Contains("IsHealthy", names);
+        Assert.Single(names);
+    }
+
+    [Fact]
+    public void HealthCheckResult_Unhealthy_has_expected_properties()
+    {
+        var names = GetPublicInstancePropertyNames(typeof(HealthCheckResult.Unhealthy));
+        var expected = new[] { "ErrorMessage", "Exception", "IsHealthy" };
+        Assert.Equal(expected, names);
+    }
 }
