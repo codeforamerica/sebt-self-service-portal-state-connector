@@ -1,8 +1,13 @@
-using SEBT.Portal.StatesPlugins.Interfaces.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace SEBT.Portal.StatesPlugins.Interfaces;
 
+/// <summary>
+/// Plugin interface for state-specific health checks.
+/// Implementations call <see cref="IHealthChecksBuilder.AddCheck"/> to register
+/// health checks with ASP.NET Core's health check middleware.
+/// </summary>
 public interface IStateHealthCheckService : IStatePlugin
 {
-    Task<HealthCheckResult> CheckHealthAsync(CancellationToken cancellationToken = default);
+    void ConfigureHealthChecks(IHealthChecksBuilder builder);
 }
