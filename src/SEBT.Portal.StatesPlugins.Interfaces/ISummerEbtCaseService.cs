@@ -6,8 +6,25 @@ namespace SEBT.Portal.StatesPlugins.Interfaces;
 public interface ISummerEbtCaseService : IStatePlugin
 {
     /// <summary>
-    /// Retrieves household data for the given guardian email (OTP/authentication email),
-    /// including Summer EBT cases for that household.
+    /// Retrieves household data by identifier type and value (e.g. phone from JWT, email from OTP).
+    /// Preferred entry point for state lookups; supports CO phone-from-claims without persisting PII.
+    /// </summary>
+    /// <param name="identifierType">Type of identifier (e.g. Email, Phone).</param>
+    /// <param name="identifierValue">Normalized value (e.g. email or phone number).</param>
+    /// <param name="piiVisibility">Which PII elements the caller is allowed to receive.</param>
+    /// <param name="identityAssuranceLevel">The IAL the user has achieved.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>Household data with Summer EBT cases, or null if none found or type not supported.</returns>
+    Task<HouseholdData?> GetHouseholdByIdentifierAsync(
+        HouseholdIdentifierType identifierType,
+        string identifierValue,
+        PiiVisibility piiVisibility,
+        IdentityAssuranceLevel identityAssuranceLevel,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Retrieves household data for the given guardian email (OTP/authentication email).
+    /// Convenience for email-only lookups; implementations may delegate to <see cref="GetHouseholdByIdentifierAsync"/>.
     /// </summary>
     /// <param name="guardianEmail">The guardian's email address used for OTP authentication.</param>
     /// <param name="piiVisibility">Which PII elements the caller is allowed to receive. Required; no default.</param>
