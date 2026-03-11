@@ -8,7 +8,7 @@
 
     <PropertyGroup>
         <VersionPrefix>0.0.1</VersionPrefix>
-        <VersionSuffix Condition="'$(Configuration)' != 'Release'">dev-$([System.DateTime]::Now.ToString('yyyyMMdd-HHmm'))</VersionSuffix>
+        <VersionSuffix Condition="'$(Configuration)' != 'Release'">dev</VersionSuffix>
     </PropertyGroup>
 
     <PropertyGroup>
