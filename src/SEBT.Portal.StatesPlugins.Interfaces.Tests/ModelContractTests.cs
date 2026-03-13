@@ -104,4 +104,5 @@ public class ModelContractTests
         var expected = new[] { "CaseNumber", "FirstName", "LastName" };
         Assert.Equal(expected, names);
     }
+
 }
