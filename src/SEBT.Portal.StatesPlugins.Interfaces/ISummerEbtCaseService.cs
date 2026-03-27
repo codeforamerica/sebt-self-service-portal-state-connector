@@ -19,4 +19,19 @@ public interface ISummerEbtCaseService : IStatePlugin
         PiiVisibility piiVisibility,
         IdentityAssuranceLevel ial,
         CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Retrieves household data for the given guardian phone number,
+    /// including Summer EBT cases for that household.
+    /// </summary>
+    /// <param name="guardianPhone">The guardian's phone number.</param>
+    /// <param name="piiVisibility">Which PII elements the caller is allowed to receive. Required; no default.</param>
+    /// <param name="ial">Identity Assurance Level the user has achieved. Use this (not PiiVisibility) for backend policy such as whether to return address.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>Household data with Summer EBT cases, or null if none found.</returns>
+    Task<HouseholdData?> GetHouseholdByGuardianPhoneAsync(
+        string guardianPhone,
+        PiiVisibility piiVisibility,
+        IdentityAssuranceLevel ial,
+        CancellationToken cancellationToken = default);
 }
