@@ -5,7 +5,7 @@ namespace SEBT.Portal.StatesPlugins.Interfaces.Models.Household;
 /// </summary>
 public class Child
 {
-    public int? CaseNumber { get; set; }
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
+    public ApplicationStatus Status { get; set; } = ApplicationStatus.Unknown;
 }

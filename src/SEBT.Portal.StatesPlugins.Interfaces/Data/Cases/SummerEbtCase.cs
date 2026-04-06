@@ -25,4 +25,6 @@ public class SummerEbtCase
     public decimal? EbtCardBalance { get; init; }
     public DateOnly? BenefitAvailableDate { get; init; }
     public DateOnly? BenefitExpirationDate { get; init; }
+    public string? EligibilitySource { get; init; }
+    public IssuanceType IssuanceType { get; init; } = IssuanceType.Unknown;
 }
