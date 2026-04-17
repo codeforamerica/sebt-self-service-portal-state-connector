@@ -27,4 +27,16 @@ public class SummerEbtCase
     public DateOnly? BenefitExpirationDate { get; init; }
     public string? EligibilitySource { get; init; }
     public IssuanceType IssuanceType { get; init; } = IssuanceType.Unknown;
+
+    /// <summary>
+    /// Whether this case was bulk-imported (co-loaded) from the state system
+    /// rather than created through the application flow.
+    /// </summary>
+    public bool IsCoLoaded { get; init; }
+
+    /// <summary>
+    /// Whether this case was automatically certified (streamline certification)
+    /// rather than originating from a guardian-submitted application.
+    /// </summary>
+    public bool IsStreamlineCertified { get; init; }
 }

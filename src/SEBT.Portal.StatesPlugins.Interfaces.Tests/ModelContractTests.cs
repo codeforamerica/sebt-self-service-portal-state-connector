@@ -39,7 +39,8 @@ public class ModelContractTests
             "BenefitAvailableDate", "BenefitExpirationDate", "ChildDateOfBirth", "ChildFirstName",
             "ChildLastName", "EbtCardBalance", "EbtCardIssueDate", "EbtCardLastFour",
             "EbtCardStatus", "EbtCaseNumber", "EligibilityType", "HouseholdType",
-            "EligibilitySource", "IssuanceType", "MailingAddress", "SummerEBTCaseID"
+            "EligibilitySource", "IsCoLoaded", "IsStreamlineCertified", "IssuanceType",
+            "MailingAddress", "SummerEBTCaseID"
         };
         foreach (var name in expected)
             Assert.Contains(name, names);
