@@ -107,4 +107,19 @@ public class ModelContractTests
         Assert.Equal(expected, names);
     }
 
+    [Fact]
+    public void CardReplacementRequest_has_expected_properties()
+    {
+        var names = GetPublicInstancePropertyNames(typeof(CardReplacementRequest));
+        var expected = new[] { "CaseIds", "HouseholdIdentifierValue", "Reason" };
+        Assert.Equal(expected, names);
+    }
+
+    [Fact]
+    public void CardReplacementResult_has_expected_properties()
+    {
+        var names = GetPublicInstancePropertyNames(typeof(CardReplacementResult));
+        var expected = new[] { "ErrorCode", "ErrorMessage", "IsPolicyRejection", "IsSuccess" };
+        Assert.Equal(expected, names);
+    }
 }

@@ -59,4 +59,15 @@ public class EnumContractTests
     {
         Assert.Equal(expected, (int)value);
     }
+
+    [Theory]
+    [InlineData(CardReplacementReason.Unspecified, 0)]
+    [InlineData(CardReplacementReason.Lost, 1)]
+    [InlineData(CardReplacementReason.Stolen, 2)]
+    [InlineData(CardReplacementReason.Damaged, 3)]
+    [InlineData(CardReplacementReason.Undeliverable, 4)]
+    public void CardReplacementReason_has_expected_values(CardReplacementReason value, int expected)
+    {
+        Assert.Equal(expected, (int)value);
+    }
 }
