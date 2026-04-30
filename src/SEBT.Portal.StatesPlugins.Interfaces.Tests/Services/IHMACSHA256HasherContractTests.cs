@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Reflection;
 using Xunit;
 using SEBT.Portal.StatesPlugins.Interfaces.Services;
@@ -24,5 +25,16 @@ public class IHMACSHA256HasherContractTests
 
         Assert.NotNull(method);
         Assert.Equal(typeof(string), method!.ReturnType);
+
+        var param = method!.GetParameters().Single();
+        Assert.Equal("input", param.Name);
+    }
+
+    [Fact]
+    public void Interface_declares_exactly_one_method()
+    {
+        var declared = typeof(IHMACSHA256Hasher).GetMethods(
+            BindingFlags.Public | BindingFlags.Instance);
+        Assert.Single(declared);
     }
 }
