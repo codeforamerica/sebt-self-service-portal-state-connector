@@ -18,7 +18,18 @@ public class SummerEbtCase
     public DateOnly? ApplicationDate { get; init; }
     public ApplicationStatus ApplicationStatus { get; init; } = ApplicationStatus.Unknown;
     public Address? MailingAddress { get; init; }
+
+    /// <summary>
+    /// State backend case identifier. Stable correlator when the state exposes one
+    /// and may differ from guardian-facing labels shown in the portal.
+    /// </summary>
     public string? EbtCaseNumber { get; init; }
+
+    /// <summary>
+    /// Optional guardian-facing reference for dashboards and letters
+    /// When null, clients typically fall back to <see cref="EbtCaseNumber"/>.
+    /// </summary>
+    public string? CaseDisplayNumber { get; init; }
     public string? EbtCardLastFour { get; init; }
     public string? EbtCardStatus { get; init; }
     public DateOnly? EbtCardIssueDate { get; init; }
