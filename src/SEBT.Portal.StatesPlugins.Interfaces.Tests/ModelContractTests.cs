@@ -36,8 +36,8 @@ public class ModelContractTests
         var expected = new[]
         {
             "ApplicationDate", "ApplicationId", "ApplicationStatus", "ApplicationStudentId",
-            "BenefitAvailableDate", "BenefitExpirationDate", "ChildDateOfBirth", "ChildFirstName",
-            "ChildLastName", "EbtCardBalance", "EbtCardIssueDate", "EbtCardLastFour",
+            "BenefitAvailableDate", "BenefitExpirationDate", "CaseDisplayNumber", "ChildDateOfBirth",
+            "ChildFirstName", "ChildLastName", "EbtCardBalance", "EbtCardIssueDate", "EbtCardLastFour",
             "EbtCardStatus", "EbtCaseNumber", "EligibilityType", "HouseholdType",
             "EligibilitySource", "IsCoLoaded", "IsStreamlineCertified", "IssuanceType",
             "MailingAddress", "SummerEBTCaseID"
