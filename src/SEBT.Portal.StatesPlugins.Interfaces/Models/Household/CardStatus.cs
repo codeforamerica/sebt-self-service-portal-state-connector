@@ -1,39 +1,25 @@
+using System.Text.Json.Serialization;
+
 namespace SEBT.Portal.StatesPlugins.Interfaces.Models.Household;
 
 /// <summary>
 /// Represents the status of a benefit card.
 /// Connectors map raw backend statuses to these values so the portal
 /// can render appropriate UI and determine available self-service actions.
+/// Serialized as the member name (e.g., "Active", "Lost") over the API
+/// per JsonStringEnumConverter, so member identifiers are the wire contract.
 /// </summary>
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum CardStatus
 {
-    Requested = 0,
-    Mailed = 1,
-    Active = 2,
-    Deactivated = 3,
-    Unknown = 4,
-
-    // Card was issued/processed but not yet mailed (DC: "Issued on [date]")
-    Processed = 5,
-
-    // Card reported lost by cardholder — eligible for replacement
-    Lost = 6,
-
-    // Card reported stolen by cardholder — eligible for replacement
+    Active = 0,
+    Damaged = 1,
+    DeactivatedByState = 2,
+    Frozen = 3,
+    Lost = 4,
+    NotActivated = 5,
+    Processed = 6,
     Stolen = 7,
-
-    // Card reported damaged by cardholder — eligible for replacement
-    Damaged = 8,
-
-    // Card deactivated by the state with no reissue allowed
-    DeactivatedByState = 9,
-
-    // Card was never activated by the cardholder
-    NotActivated = 10,
-
-    // Card temporarily frozen — no transactions allowed
-    Frozen = 11,
-
-    // Card could not be delivered to the address on file
-    Undeliverable = 12
+    Undeliverable = 8,
+    Unknown = 9
 }
