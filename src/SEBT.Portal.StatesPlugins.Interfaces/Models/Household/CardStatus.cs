@@ -1,15 +1,11 @@
-using System.Text.Json.Serialization;
-
 namespace SEBT.Portal.StatesPlugins.Interfaces.Models.Household;
 
 /// <summary>
-/// Represents the status of a benefit card.
-/// Connectors map raw backend statuses to these values so the portal
-/// can render appropriate UI and determine available self-service actions.
-/// Serialized as the member name (e.g., "Active", "Lost") over the API
-/// per JsonStringEnumConverter, so member identifiers are the wire contract.
+/// Represents the status of a benefit card. Used only as a plugin-to-portal
+/// mapping contract; the corresponding portal-side <c>Core.CardStatus</c>
+/// is what gets serialized over the API. Members must stay in sync with
+/// the Core enum (parity is enforced by EnumParityTests in the portal).
 /// </summary>
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum CardStatus
 {
     Active = 0,
