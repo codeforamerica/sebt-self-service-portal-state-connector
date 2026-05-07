@@ -111,7 +111,15 @@ public class ModelContractTests
     public void CardReplacementRequest_has_expected_properties()
     {
         var names = GetPublicInstancePropertyNames(typeof(CardReplacementRequest));
-        var expected = new[] { "CaseIds", "HouseholdIdentifierValue", "Reason" };
+        var expected = new[] { "CaseRefs", "HouseholdIdentifierValue", "Reason" };
+        Assert.Equal(expected, names);
+    }
+
+    [Fact]
+    public void CaseRef_has_expected_properties()
+    {
+        var names = GetPublicInstancePropertyNames(typeof(CaseRef));
+        var expected = new[] { "ApplicationId", "ApplicationStudentId", "SummerEbtCaseId" };
         Assert.Equal(expected, names);
     }
 
