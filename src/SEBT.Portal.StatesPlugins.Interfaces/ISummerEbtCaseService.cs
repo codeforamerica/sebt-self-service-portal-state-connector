@@ -51,4 +51,21 @@ public interface ISummerEbtCaseService : IStatePlugin
         string benefitIdentifierIc,
         DateOnly guardianDateOfBirth,
         CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Retrieves household data when warehouse rows are keyed by benefit IC + guardian DOB (DC co-loaded path).
+    /// Populates <see cref="HouseholdData.Email"/> with <paramref name="guardianLoginEmail"/> (portal login email)
+    /// because source rows may not include it. Implementations should respect <paramref name="identityAssuranceLevel"/>
+    /// for address surfacing the same way as <see cref="GetHouseholdByGuardianEmailAsync"/>.
+    /// </summary>
+    /// <param name="benefitIdentifierIc">SNAP/TANF identifier matched to warehouse <c>PortalID</c>.</param>
+    /// <param name="guardianDateOfBirth">Guardian DOB used with IC in the warehouse lookup.</param>
+    /// <param name="guardianLoginEmail">Authenticated guardian email for the returned household envelope.</param>
+    Task<HouseholdData?> GetHouseholdByBenefitIdentifierAndDobAsync(
+        string benefitIdentifierIc,
+        DateOnly guardianDateOfBirth,
+        string guardianLoginEmail,
+        PiiVisibility piiVisibility,
+        IdentityAssuranceLevel identityAssuranceLevel,
+        CancellationToken cancellationToken = default);
 }
