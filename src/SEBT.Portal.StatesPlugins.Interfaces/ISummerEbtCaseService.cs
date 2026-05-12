@@ -41,15 +41,17 @@ public interface ISummerEbtCaseService : IStatePlugin
     /// For co-loaded ID proofing with SNAP/TANF: attempts to match the submitted benefit identifier
     /// (mapped to the state warehouse <c>IC</c> field) and the guardian's date of birth against
     /// state data. Only the DC plugin implements this (e.g. <c>GetHouseholdByGuardian</c> with JSON
-    /// <c>{"IC":...,"DOB":...}</c>); other states should return <c>false</c>.
+    /// <c>{"IC":...,"DOB":...,"PortalUUID":...}</c>); other states should return <c>false</c>.
     /// </summary>
     /// <param name="benefitIdentifierIc">The SNAP/TANF identifier value from onboarding (IC equivalent).</param>
     /// <param name="guardianDateOfBirth">Guardian DOB from the ID proofing form.</param>
+    /// <param name="portalUserId">The portal's User.Id (Guid V7). DC merges this into the GuardianIdentifiers JSON as PortalUUID so the warehouse can correlate calls back to portal records.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns><c>true</c> when the state warehouse reports at least one matching household case row (DC only).</returns>
     Task<bool> TryMatchCoLoadedGuardianByBenefitIdAndDobAsync(
         string benefitIdentifierIc,
         DateOnly guardianDateOfBirth,
+        Guid portalUserId,
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -61,11 +63,13 @@ public interface ISummerEbtCaseService : IStatePlugin
     /// <param name="benefitIdentifierIc">SNAP/TANF identifier matched to warehouse <c>PortalID</c>.</param>
     /// <param name="guardianDateOfBirth">Guardian DOB used with IC in the warehouse lookup.</param>
     /// <param name="guardianLoginEmail">Authenticated guardian email for the returned household envelope.</param>
+    /// <param name="portalUserId">The portal's User.Id (Guid V7). DC merges this into the GuardianIdentifiers JSON as PortalUUID so the warehouse can correlate calls back to portal records.</param>
     Task<HouseholdData?> GetHouseholdByBenefitIdentifierAndDobAsync(
         string benefitIdentifierIc,
         DateOnly guardianDateOfBirth,
         string guardianLoginEmail,
         PiiVisibility piiVisibility,
         IdentityAssuranceLevel identityAssuranceLevel,
+        Guid portalUserId,
         CancellationToken cancellationToken = default);
 }
